@@ -10,8 +10,13 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # initiate the program
 driver = webdriver.Firefox()
-driver.get("https://scholar.google.com/")
-wait = WebDriverWait(driver,10)
+try:
+    driver.get("https://scholar.google.com/")
+    wait = WebDriverWait(driver,10)
+except:
+    print("An error has occurred when connecting to site. Exiting")
+    driver.close()
+
 element = driver.find_element_by_id('gs_hdr_tsi')
 element.send_keys("social media")
 # waits until search button can be clicked
@@ -36,13 +41,14 @@ def go_to_next_page():
     next_page = driver.find_element(By.CLASS_NAME, 'gs_ico_nav_next')
     next_page.click()
 
-pages_to_get = 1
+print("How many pages do you want to search?"); pages_to_search = int(input())
 
-while pages_to_get < 6:
+print("Please select an integer")
+
+for page in range(pages_to_search):
     get_results()
-    print(f"Page {pages_to_get} scanned. Moving to next page.")
+    print(f"Page {page} scanned. Moving to next page.")
     go_to_next_page()
-    pages_to_get += 1
 
 info = dict(zip(articles,links))
 
