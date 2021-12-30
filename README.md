@@ -26,6 +26,16 @@ Move Into Directory & Install dependencies
 Run the program 
 
     ./search_schol.py
+    
+### Using with Tkinter
+
+Move Into tkinter_search Directory
+
+    cd Scholar-Automation/tkinter_search
+
+Run the program 
+
+    ./goog_gui.py
 
 
 Feel free to share and contribute this project!
